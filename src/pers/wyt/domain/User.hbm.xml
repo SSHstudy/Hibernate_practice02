@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="pers.wyt.domain.User" table="t_user">
+		<id name="id" column="id">
+			<!-- 主键生成策略：
+			 increment:获取主键最大值，进行+1，作为主键；并发访问会出问题
+			 native:本地策略 （short,int,long）
+			 sequence:short,int,long
+			 uuid:char,varchar
+			 assigned:主键自己维护-->
+			<generator class="increment" />
+		</id>
+		<property name="name" column="name" length="30" />
+		<property name="age" column="age" />
+	</class>
+
+</hibernate-mapping>
