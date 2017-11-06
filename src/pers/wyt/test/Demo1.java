@@ -1,4 +1,4 @@
-package test;
+package pers.wyt.test;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;

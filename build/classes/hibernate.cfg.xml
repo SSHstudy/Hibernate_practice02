@@ -23,6 +23,10 @@
 	<!-- 生成数据库表结构 ，通过映射-->
 	<property name="hibernate.hbm2ddl.auto">update</property>
 	
+	<!-- 开启绑定本地的session -->
+	<property name="hibernate.current_session_context_class">thread</property>
+	
+	
 	<!-- 映射配置文件，需要引入配置映射文件 -->
 	<mapping resource="pers/wyt/domain/User.hbm.xml"/>
 	<mapping resource="pers/wyt/domain/Person.hbm.xml"/>

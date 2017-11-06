@@ -1,0 +1,37 @@
+Hibernate为了管理持久化类，将持久化类分成了三个状态
+*瞬时态：Transient Object
+	没有持久化标识OID，没有被纳入到Session对象的管理
+*持久态：Persistent Object
+	有持久化标识OID，已经被纳入到Session对象的管理
+	注意：持久化持久态的对象有自动更新数据库的能力
+*脱管态：Detached Object
+	有持久化标识OID，没有被纳入到Session对象的管理
+
+
+什么是事务：
+*事务是逻辑上一组操作，组成事务的各个执行单元，操作要么全都成功，要么全都失败。
+
+事务的特性：
+*原子性：事务不可分割
+*一致性：事务执行前后数据的完整性保持一致
+*隔离性：一个事务执行的过程中，不应该受到其他的事务的干扰
+*持久性：事务一旦提交，数据就永久保存到数据库中
+
+设置数据库的隔离级别（数据库有默认的）
+
+
+关于写的问题：丢失更新
+解决方法：
+*悲观锁（不怎么用）
+*乐观锁（为JavaBean添加新属性version）
+
+
+绑定本地的session
+在hibernate框架中，使用session对象开启事务，所以需要来传递session对象，框架提供 threadlocal的方式
+*需要在hibernate.cfg.xml的配置文件中提供配置
+  <property name="hibernate.current_session_context_class">thread</property>
+
+*重新定义hibernate的工具类，使用sessionfactory的getCurrentSession()方法，获取当前的session对象，并且该对象不用手动关闭，线程结束，自动关闭。
+
+
+criteria查询接口（做条件查询非常合适）

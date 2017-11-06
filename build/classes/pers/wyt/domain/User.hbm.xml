@@ -15,6 +15,9 @@
 			 assigned:主键自己维护-->
 			<generator class="increment" />
 		</id>
+		<!-- 乐观锁，就使用version标签 -->
+		<version name="version"/>
+		
 		<property name="name" column="name" length="30" />
 		<property name="age" column="age" />
 	</class>
